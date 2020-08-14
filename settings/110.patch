@@ -1,0 +1,114 @@
+From efdd2a85519d4990596194af5bf50636d2610f09 Mon Sep 17 00:00:00 2001
+From: Rajendraprasad K J <KarammelJayakumar.Rajendraprasad@in.bosch.com>
+Date: Mon, 6 Jan 2020 06:41:57 -0500
+Subject: [PATCH 1/4] ivi-input-controller: update to weston 7 header files
+
+update the header file path.
+
+Signed-off-by: Rajendraprasad K J <KarammelJayakumar.Rajendraprasad@in.bosch.com>
+---
+ .../ivi-input-controller/src/ivi-input-controller.c             | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ivi-input-modules/ivi-input-controller/src/ivi-input-controller.c b/ivi-input-modules/ivi-input-controller/src/ivi-input-controller.c
+index a0bfc48..257a1dc 100644
+--- a/ivi-input-modules/ivi-input-controller/src/ivi-input-controller.c
++++ b/ivi-input-modules/ivi-input-controller/src/ivi-input-controller.c
+@@ -31,7 +31,7 @@
+ #include <fcntl.h>
+ #include <unistd.h>
+ 
+-#include "plugin-registry.h"
++#include <libweston/plugin-registry.h>
+ #include "ilm_types.h"
+ 
+ #include "ivi-input-server-protocol.h"
+
+From 5abb2b497e0153210d41ec3685dc0152587625fa Mon Sep 17 00:00:00 2001
+From: Rajendraprasad K J <KarammelJayakumar.Rajendraprasad@in.bosch.com>
+Date: Mon, 6 Jan 2020 06:45:11 -0500
+Subject: [PATCH 2/4] ivi-id-agent: update to weston 7 header files
+
+update the header file path.
+
+Signed-off-by: Rajendraprasad K J <KarammelJayakumar.Rajendraprasad@in.bosch.com>
+---
+ ivi-id-agent-modules/ivi-id-agent/src/ivi-id-agent.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/ivi-id-agent-modules/ivi-id-agent/src/ivi-id-agent.c b/ivi-id-agent-modules/ivi-id-agent/src/ivi-id-agent.c
+index 8f0c199..b80e2a4 100644
+--- a/ivi-id-agent-modules/ivi-id-agent/src/ivi-id-agent.c
++++ b/ivi-id-agent-modules/ivi-id-agent/src/ivi-id-agent.c
+@@ -26,8 +26,8 @@
+ #include <limits.h>
+ 
+ #include <weston.h>
+-#include <libweston-6/libweston-desktop.h>
+-#include "config-parser.h"
++#include <libweston-desktop/libweston-desktop.h>
++#include <libweston/config-parser.h>
+ #include <weston/ivi-layout-export.h>
+ 
+ #ifndef INVALID_ID
+
+From b99082adfaf250b15f03345cdf1b433fb1575581 Mon Sep 17 00:00:00 2001
+From: Rajendraprasad K J <KarammelJayakumar.Rajendraprasad@in.bosch.com>
+Date: Mon, 6 Jan 2020 06:45:54 -0500
+Subject: [PATCH 3/4] ivi-id-agent: update dependencies to build on weston 7
+
+upgrade libweston-desktop version.
+
+Signed-off-by: Rajendraprasad K J <KarammelJayakumar.Rajendraprasad@in.bosch.com>
+---
+ ivi-id-agent-modules/ivi-id-agent/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ivi-id-agent-modules/ivi-id-agent/CMakeLists.txt b/ivi-id-agent-modules/ivi-id-agent/CMakeLists.txt
+index 3e604a5..ff47808 100644
+--- a/ivi-id-agent-modules/ivi-id-agent/CMakeLists.txt
++++ b/ivi-id-agent-modules/ivi-id-agent/CMakeLists.txt
+@@ -25,7 +25,7 @@ find_package(PkgConfig REQUIRED)
+ pkg_check_modules(WAYLAND_SERVER wayland-server REQUIRED)
+ pkg_check_modules(WESTON weston>=6.0.0 REQUIRED)
+ pkg_check_modules(PIXMAN pixman-1 REQUIRED)
+-pkg_check_modules(LIBWESTON_DESKTOP libweston-desktop-6 REQUIRED)
++pkg_check_modules(LIBWESTON_DESKTOP libweston-desktop-7 REQUIRED)
+ 
+ find_package(Threads REQUIRED)
+ 
+
+From 010d53961b866891b9ec946053a3e3bfc0adbc2c Mon Sep 17 00:00:00 2001
+From: Rajendraprasad K J <KarammelJayakumar.Rajendraprasad@in.bosch.com>
+Date: Mon, 6 Jan 2020 06:48:24 -0500
+Subject: [PATCH 4/4] simple-weston-client: update dependencies to build on
+ weston 7
+
+upgrade libweston-protocols version.
+
+Signed-off-by: Rajendraprasad K J <KarammelJayakumar.Rajendraprasad@in.bosch.com>
+---
+ .../simple-weston-client/CMakeLists.txt                       | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/ivi-layermanagement-examples/simple-weston-client/CMakeLists.txt b/ivi-layermanagement-examples/simple-weston-client/CMakeLists.txt
+index b34633e..af7e29d 100644
+--- a/ivi-layermanagement-examples/simple-weston-client/CMakeLists.txt
++++ b/ivi-layermanagement-examples/simple-weston-client/CMakeLists.txt
+@@ -22,14 +22,14 @@ project (simple-weston-client)
+ find_package(PkgConfig)
+ pkg_check_modules(WAYLAND_CLIENT wayland-client REQUIRED)
+ pkg_check_modules(WAYLAND_CURSOR wayland-cursor REQUIRED)
+-pkg_check_modules(LIBWESTON_PROTOCOLS libweston-6-protocols QUIET)
++pkg_check_modules(LIBWESTON_PROTOCOLS libweston-7-protocols QUIET)
+ 
+ if(${LIBWESTON_PROTOCOLS_FOUND})
+     #check for DLT
+     pkg_check_modules(DLT automotive-dlt REQUIRED)
+ 
+     #import the pkgdatadir from libweston-protocols pkgconfig file
+-    execute_process(COMMAND ${PKG_CONFIG_EXECUTABLE} --variable=pkgdatadir libweston-6-protocols
++    execute_process(COMMAND ${PKG_CONFIG_EXECUTABLE} --variable=pkgdatadir libweston-7-protocols
+                     OUTPUT_VARIABLE WestonProtocols_PKGDATADIR)
+     string(REGEX REPLACE "[\r\n]" "" WestonProtocols_PKGDATADIR "${WestonProtocols_PKGDATADIR}")
+     SET(LIBWESTON_PROTOCOLS_PKGDATADIR ${WestonProtocols_PKGDATADIR})
