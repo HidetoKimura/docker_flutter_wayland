@@ -17,7 +17,7 @@ services:
      - "/dev/dri:/dev/dri"
      - "/dev/snd:/dev/snd"
     volumes:
-      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /tmp/:/tmp/
       - /run/user:/run/user
       - /home/${USER}/${WORK_DIR}:/home/user/work
 
