@@ -42,11 +42,6 @@ $ docker-compose exec app /bin/bash
 $ docker-compose down
 ~~~
 
-# In Docker
-~~~
-$ flutter_init.sh
-~~~
-
 # sample run test
 ~~~
 $ cd work
@@ -58,6 +53,7 @@ $ flutter run
 # build & exec test 
 ~~~
 $ flutter build linux
+$ flutter build bundle
 $ cd build/linux/debug/bundle/
 $ ./testbed
 ~~~
@@ -65,10 +61,13 @@ $ ./testbed
 # weston & flutter wayland
 - see flutter_wayland
   https://github.com/HidetoKimura/flutter_wayland
+
 ~~~
-$ weston --width 800 --height 600 &
+$ cd <flutter_wayland/build>
+$ cp /home/user/.local/flutter/bin/cache/artifacts/engine/linux-x64/icudtl.dat .
+$ weston --width 640 --height 480 &
 $ layer-add-surfaces 1000 10 &
-$ ./flutter_wayland ../external/asset_bundle/testbed
+$ ./flutter_wayland <flutter-desktop-embedding/testbed/build/flutter_assets>
 ~~~
 
 # Docker save & load
