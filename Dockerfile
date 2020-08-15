@@ -112,9 +112,8 @@ USER ${DOCKER_USER}
 WORKDIR /home/${DOCKER_USER}
 
 # Flutter
-RUN git clone https://github.com/flutter/flutter
+RUN git clone https://github.com/flutter/flutter -b 1.20.2
 RUN mv flutter /home/${DOCKER_USER}/.local/
 ENV PATH $PATH:/home/${DOCKER_USER}/.local/flutter/bin/:/home/${DOCKER_USER}/.local/bin/
 
 RUN flutter_init.sh
-
